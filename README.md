@@ -120,7 +120,7 @@ DATABASES = {
 
 If you need more help, check out [this tutorial](https://github.com/DjangoGirls/tutorial-extensions/blob/master/optional_postgresql_installation/README.md) from [Django Girls](https://djangogirls.org/) on installing Postgres with Django.
 
-//// I am stuck here. Make migrations? ////
+//// Further instructions coming soon. I encountered errors when trying to run the server for a cloned Django project. Stay tuned! ////
 
 Server Setup
 -----------
@@ -150,7 +150,9 @@ Basic Usage
 
 Known Issues
 ------------
-- Throws errors if New Campaign form submission doesn't contain all fields
+- Throws errors if New Campaign form submission doesn't contain all fields.
+
+- If there are lots of result photos, some may not render initially on the Campaign Detail page. You can refresh the page and they should appear. 
 
 Choices I Made
 -----------
