@@ -36,8 +36,7 @@ Next, type ` $ source env/bin/activate ` to create a "bubble" around the workspa
 
 You will see that there is now '(env)' in front of the command line prompt: ` (env) $ `
 
-It is worth mentioning the .gitignore file at this point. There are certain files that we don't want or need to commit to the repository, and the names of those files will go inside a different file called .gitignore. When we eventually do make our commits, git will automatically ignore (ha, ha) the files listed inside the .gitignore file. The .gitignore file is already included in the instagram_miner repository you cloned.
-```
+It is worth mentioning the .gitignore file at this point. There are certain files that we don't want or need to commit to the repository, and the names of those files will go inside a different file called .gitignore. When we eventually do make our commits, git will automatically ignore (ha, ha) the files listed inside the .gitignore file. The .gitignore file is already included in the instagram_miner repository you cloned -- you don't need to do anything here.
 
 We now need to install all the libraries and technologies that appear in the file ` requirements.txt `. From the ` instagram_miner/ ` directory (which you should still be in), simply type the following into your Terminal:
 
