@@ -5,6 +5,7 @@ Table of Contents
 ----------
 - [Technologies Used](https://github.com/erinallard/instagram_miner#technologies-used)
 - [Installation](https://github.com/erinallard/instagram_miner#installation)
+- [Access Tokens and Secret Keys](https://github.com/erinallard/instagram_miner#access-tokens-and-secret-keys)
 - [Database Setup](https://github.com/erinallard/instagram_miner#database-setup)
 - [Server Setup](https://github.com/erinallard/instagram_miner#server-setup)
 - [Basic Usage](https://github.com/erinallard/instagram_miner#basic-usage)
@@ -48,47 +49,9 @@ You should see a success message similar to this at the bottom of the Terminal w
 Installing collected packages: Django, httplib2, psycopg2, requests, simplejson
 Successfully installed Django-1.9.5 httplib2-0.9.2 psycopg2-2.6.1 requests-2.10.0 simplejson-3.8.2
 ```
-
-Database Setup
------------
-Download [Postgres](http://postgresapp.com/) if you don't already have it, and install it. Make sure it is running! If you're on a Mac, there will be a small black elephant in the upper right corner of your menu bar.
-
-We can launch an interactive Postgres console in a Mac Terminal by running the command ` (env) $ psql `. You'll know you're in the Postgres database when the ` $ ` at the beginning of your command line prompt is replaced with a ` # `.
-
-To create a user, type the following command into the Terminal. Replace 'name' with your name (no white spaces!):
-
-``` python
-CREATE USER name;
-CREATE ROLE
-```
-
-Next, we need to create the actual database. Type the following command into the Terminal. Replace 'db_name' with the name you want to give to the database (no white spaces!) and 'name' with the name you created for yourself in the previous step.
-
-``` python
-CREATE DATABASE db_name OWNER name;
-CREATE DATABASE
-```
-
-Cool, now we have a database! We need to tell Instagram Miner that it exists. Find this chunk of text in your ` project/ig_miner/settings.py ` file, and update the placeholder text with the 'db_name' and 'name' you created in the previous steps.
-
-``` python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_name',
-        'USER': 'name',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-```
-
-If you need more help, check out [this tutorial](https://github.com/DjangoGirls/tutorial-extensions/blob/master/optional_postgresql_installation/README.md) from [Django Girls](https://djangogirls.org/) on installing Postgres with Django.
-
-Server Setup
------------
-In the ` project ` directory you created for this project, create a file called 'secrets.sh'. On a Mac, the Terminal command is: 
+Access Tokens and Secret Keys
+----------
+In the ` instagram_miner/ ` directory create a file called 'secrets.sh'. On a Mac, the Terminal command is: 
 
 ` (env) $ touch secrets.sh `
 
@@ -107,11 +70,63 @@ You will need a SECRET_KEY for the Django app. Obtain one from [MiniWebTool](htt
 
 ` export SECRET_KEY='<secret_key>' `
 
- **DO NOT commit secrets.sh to your repository!** Instead, add ` secrets.sh ` as a line in your ` project/.gitignore ` file.
+ **DO NOT commit secrets.sh to your repository!** Instead, add ` secrets.sh ` as a line in your ` project/.gitignore ` file:
+
+ ``` python
+.DS_STORE
+*.pyc
+env/
+secrets.sh
+ ```
 
 **Important!** We are not committing the ACCESS_TOKEN or SECRET_KEY to our repo for security reasons, but we still need to tell our app this info exists. To do this on a Mac, we need to source the secrets.sh file while in our ` project/ ` directory in **every** Terminal tab we'll be using for this project. 
 
 ` (env) $ source secrets.sh `
+
+Database Setup
+-----------
+Download [Postgres](http://postgresapp.com/) if you don't already have it, and install it. Make sure it is running! If you're on a Mac, there will be a small black elephant in the upper right corner of your menu bar.
+
+We can launch an interactive Postgres console in a Mac Terminal. From the ` instagram_miner/ ` directory, run the command ` (env) $ psql `. You'll know you're in the Postgres database when the ` $ ` at the beginning of your command line prompt is replaced with a ` # `.
+
+To create a user, type the following command into the Terminal. Replace 'name' with your name (no white spaces!):
+
+``` python
+CREATE USER name;
+CREATE ROLE
+```
+
+Next, we need to create the actual database. Type the following command into the Terminal. Replace 'db_name' with the name you want to give to the database (no white spaces!) and 'name' with the name you created for yourself in the previous step.
+
+``` python
+CREATE DATABASE db_name OWNER name;
+CREATE DATABASE
+```
+
+Cool, now we have a database! We need to tell Instagram Miner that it exists. Find this chunk of text in your ` instagram_miner/ig_miner/settings.py ` file, and update the placeholder database text for 'NAME' with the 'db_name' you created in the previous steps. Update 'USER' with the 'name' you created in the previous steps.
+
+``` python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_name',
+        'USER': 'name',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+```
+
+If you need more help, check out [this tutorial](https://github.com/DjangoGirls/tutorial-extensions/blob/master/optional_postgresql_installation/README.md) from [Django Girls](https://djangogirls.org/) on installing Postgres with Django.
+
+###################
+##make migrations##
+###################
+
+Server Setup
+-----------
+
 
 Woo hoo! You're now ready to run your server! Make sure you're in the ` project ` directory, then type the following command in your Terminal and visit ` http://localhost:8000 ` in your web browser:
 
