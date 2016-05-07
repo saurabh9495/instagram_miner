@@ -120,15 +120,11 @@ DATABASES = {
 
 If you need more help, check out [this tutorial](https://github.com/DjangoGirls/tutorial-extensions/blob/master/optional_postgresql_installation/README.md) from [Django Girls](https://djangogirls.org/) on installing Postgres with Django.
 
-###################
-##make migrations##
-###################
+//// I am stuck here. Make migrations? ////
 
 Server Setup
 -----------
-
-
-Woo hoo! You're now ready to run your server! Make sure you're in the ` project ` directory, then type the following command in your Terminal and visit ` http://localhost:8000 ` in your web browser:
+Woo hoo! You're now ready to run your server! Make sure you're in the ` instagram_miner/ ` directory, then type the following command in your Terminal and visit ` http://localhost:8000 ` in your web browser:
 
 ` (env) $ python manage.py runserver `
 
@@ -137,8 +133,6 @@ You should see the navbar on the home page. There won't be any campaigns listed 
 
 Basic Usage
 -----------
-- The rate limit for the endpoint used in this app is 5,000/hour. The new_campaign view contains logic such that if the rate limit hits 4,999 the program will stop making API calls and will work with the data thus far obtained.
- 
 ### 1. Create a new campaign
 * Visit ` http://localhost:8000/campaign/new/ ` or click the 'New Campaign' link in the top navbar.
 * The Campaign Title should be unique and descriptive.
@@ -160,7 +154,7 @@ Known Issues
 
 Choices I Made
 -----------
-- In order to reduce the risk of hitting the rate limit for the endpoint (5,000/hour), I sent a ` {'count': 100} ` parameter in the header of the GET request to the Instagram API. I tested this by pulling result photos for a hashtag with 1,550 posts. I expected to have 16 API hits but instead had 22, for an average of 70.5 results per page of the endpoint. 
+- In order to reduce the risk of hitting the rate limit for the endpoint (5,000/hour), I sent a ` {'count': 100} ` parameter in the header of the GET request to the Instagram API. I tested this by pulling result photos for a hashtag with 1,550 posts. I expected to have 16 API hits but instead had 22, for an average of 70.5 results per page of the endpoint. The new_campaign view contains logic such that if the rate limit hits 4,999 the program will stop making API calls and will work with the data thus far obtained.
 
 - The API call returns data for the time the photo was posted to Instagram as epoch time. The New Campaign form allows the user to enter start/end dates as strings, which are converted to epoch time. All date info is stored in the Postgres database as epoch time in order to more easily determine whether or not a photo was posted within the specified time range.
 
