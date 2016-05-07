@@ -26,13 +26,29 @@ Technologies used
 
 Installation
 -----------
-- Fork the repo
-- Make a new directory and pull to this directory
-- source a virtual environment
-- install from requirements.txt
-- create secrets.sh
-- create .gitignore
-- add *.pyc, env/, .DS_STORE, secrets.sh to .gitignore
+Fork the repo from GitHub and clone it to your machine. If you need help with this part, GitHub has [great documentation](https://help.github.com/articles/fork-a-repo/) -- follow along up to, but not including, Step 3.
+
+We need to create a virtual environment in our copy of the repository, so that the technologies you download to make Instagram Miner work don't interfere with any other technologies you may have installed on your computer. To do this, make sure you're in the ` instagram_miner/ ` directory then type the following in your Terminal:
+
+` $ virtualenv env `
+
+Next, type ` $ source env/bin/activate ` to create a "bubble" around the workspace.
+
+You will see that there is now '(env)' in front of the command line prompt: ` (env) $ `
+
+It is worth mentioning the .gitignore file at this point. There are certain files that we don't want or need to commit to the repository, and the names of those files will go inside a different file called .gitignore. When we eventually do make our commits, git will automatically ignore (ha, ha) the files listed inside the .gitignore file. The .gitignore file is already included in the instagram_miner repository you cloned.
+```
+
+We now need to install all the libraries and technologies that appear in the file ` requirements.txt `. From the ` instagram_miner/ ` directory (which you should still be in), simply type the following into your Terminal:
+
+` (env) $ pip install -r requirements.txt `
+
+You should see a success message similar to this at the bottom of the Terminal window:
+
+``` python
+Installing collected packages: Django, httplib2, psycopg2, requests, simplejson
+Successfully installed Django-1.9.5 httplib2-0.9.2 psycopg2-2.6.1 requests-2.10.0 simplejson-3.8.2
+```
 
 Database Setup
 -----------
@@ -122,7 +138,7 @@ Basic Usage
 * You can also access this list by clicking the link 'My Campaigns' in the top navbar.
 
 ### 3. Viewing your campaign details
-* Clicking on a campaign title on the home page will take you to that campaign's detail page: ` http://localhost:8000/campaign/<pk> `, where ` <pk ` is the primary key (id) associated with that campaign in the database.
+* Clicking on a campaign title on the home page will take you to that campaign's detail page: ` http://localhost:8000/campaign/<pk> `, where ` <pk> ` is the primary key (id) associated with that campaign in the database.
 
 Known Issues
 ------------
