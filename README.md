@@ -1,5 +1,6 @@
 # Instagram Miner
-Instagram Miner allows a user to view & save all posts made with a specific hashtag within a time range. 
+Instagram Miner allows a user to view & save all posts made with a specific hashtag within a time range.
+![Instagram Miner Campaign Detail](/static/images/chicago_bandits.jpg) 
 
 Table of Contents
 ----------
@@ -38,7 +39,7 @@ Next, type ` $ source env/bin/activate ` to create a "bubble" around the workspa
 
 You will see that there is now '(env)' in front of the command line prompt: ` (env) $ `
 
-It is worth mentioning the .gitignore file at this point. There are certain files that we don't want or need to commit to the repository, and the names of those files will go inside a different file called .gitignore. When we eventually do make our commits, git will automatically ignore (ha, ha) the files listed inside the .gitignore file. The .gitignore file is already included in the instagram_miner repository you cloned -- you don't need to do anything here.
+It is worth mentioning the .gitignore file at this point. There are certain files that we don't want or need to commit to the repository, and the names of those files will go inside a different file called ` .gitignore `. When we eventually do make our commits, git will automatically ignore (ha, ha) the files listed inside the .gitignore file. The .gitignore file is already included in the instagram_miner repository you cloned -- you don't need to do anything here.
 
 We now need to install all the libraries and technologies that appear in the file ` requirements.txt `. From the ` instagram_miner/ ` directory (which you should still be in), simply type the following into your Terminal:
 
@@ -157,7 +158,7 @@ We're getting so close! Let's create an admin. Run this command in the Terminal 
 
 ` python manage.py createsuperuser `
 
-We need to communicate this addition to Django, so we'l have to do another migration:
+We need to communicate this addition to Django, so we'll have to do another migration:
 
 ` python manage.py makemigrations ig_miner_app `
 
@@ -198,7 +199,7 @@ Quit the server with CONTROL-C.
 
 You can now visit the URL ` http://localhost:8000 ` in your web browser and you should see the navbar on the home page! There won't be any campaigns listed on the home page, because you haven't created any yet.
 
-![Homepage](/Users/Erin/Desktop/instagram_miner.jpg)
+![Instagram Miner Homepage](/static/images/instagram_miner.jpg)
 
 
 Basic Usage
@@ -216,7 +217,7 @@ Basic Usage
 * You can also access this list by clicking the link 'My Campaigns' in the top navbar.
 
 ### 3. Viewing your campaign details
-* Clicking on a campaign title on the home page will take you to that campaign's detail page: ` http://localhost:8000/campaign/<pk> `, where ` <pk> ` is the primary key (id) associated with that campaign in the database.
+* Clicking on a campaign title on the home page will take you to that campaign's detail page: ` http://localhost:8000/campaign/<pk> `, where ` <pk> ` is the primary key (id) associated with that campaign in the database. Remember to use the pagination feature at the bottom of each page to access all of the result-photos!
 
 Known Issues
 ------------
@@ -257,6 +258,10 @@ Version 2.0
 - Allow a user to request permission from the photo's owner to re-use the photo for marketing purposes
 
 - Add tests
+
+Many Thanks
+-----------
+...to StackOverflow user Bernard Parah [for their help with](http://stackoverflow.com/a/37094453/5166521) describing the steps to replicate my original Django app.
 
 
 About the author
