@@ -1,6 +1,6 @@
 # Instagram Miner
 Instagram Miner allows a user to view & save all posts made with a specific hashtag within a time range.
-![Instagram Miner Campaign Detail](/static/images/chicago_bandits.jpg) 
+![Instagram Miner Campaign Detail](/static/images/chicago_bandits.png) 
 
 Table of Contents
 ----------
@@ -199,7 +199,7 @@ Quit the server with CONTROL-C.
 
 You can now visit the URL ` http://localhost:8000 ` in your web browser and you should see the navbar on the home page! There won't be any campaigns listed on the home page, because you haven't created any yet.
 
-![Instagram Miner Homepage](/static/images/instagram_miner.jpg)
+![Instagram Miner Homepage](/static/images/instagram_miner.png)
 
 
 Basic Usage
