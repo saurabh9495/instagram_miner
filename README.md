@@ -7,6 +7,7 @@ Table of Contents
 - [Installation](https://github.com/erinallard/instagram_miner#installation)
 - [Access Tokens and Secret Keys](https://github.com/erinallard/instagram_miner#access-tokens-and-secret-keys)
 - [Database Setup](https://github.com/erinallard/instagram_miner#database-setup)
+- [Admin Account Setup](https://github.com/erinallard/instagram_miner#admin-account-setup)
 - [Server Setup](https://github.com/erinallard/instagram_miner#server-setup)
 - [Basic Usage](https://github.com/erinallard/instagram_miner#basic-usage)
 - [Known Issues](https://github.com/erinallard/instagram_miner#known-issues)
@@ -87,7 +88,7 @@ Database Setup
 -----------
 Download [Postgres](http://postgresapp.com/) if you don't already have it, and install it. Make sure it is running! If you're on a Mac, there will be a small black elephant in the upper right corner of your menu bar.
 
-We can launch an interactive Postgres console in a Mac Terminal. From the ` instagram_miner/ ` directory, run the command ` (env) $ psql `. You'll know you're in the Postgres database when the ` $ ` at the beginning of your command line prompt is replaced with a ` # `.
+We can launch an interactive Postgres console in a Mac Terminal. Open a new Terminal tab. Source the environment again, just to be sure. From the ` instagram_miner/ ` directory, run the command ` (env) $ psql `. You'll know you're in the Postgres database when the ` $ ` at the beginning of your command line prompt is replaced with a ` # `.
 
 To create a user, type the following command into the Terminal. Replace 'name' with your name (no white spaces!):
 
@@ -120,15 +121,84 @@ DATABASES = {
 
 If you need more help, check out [this tutorial](https://github.com/DjangoGirls/tutorial-extensions/blob/master/optional_postgresql_installation/README.md) from [Django Girls](https://djangogirls.org/) on installing Postgres with Django.
 
-//// Further instructions coming soon. I encountered errors when trying to run the server for a cloned Django project. Stay tuned! ////
+Switch back to the first Terminal tab you created (make sure you're still in your virtual environment) and run ` python manage.py migrate ` in the Terminal. You should see a success message similar to this:
+
+``` python
+Operations to perform:
+  Apply all migrations: admin, ig_miner_app, contenttypes, auth, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying ig_miner_app.0001_initial... OK
+  Applying ig_miner_app.0002_photo_campaign_id... OK
+  Applying ig_miner_app.0003_auto_20160502_1503... OK
+  Applying ig_miner_app.0004_auto_20160502_1520... OK
+  Applying ig_miner_app.0005_auto_20160502_1536... OK
+  Applying ig_miner_app.0007_auto_20160506_1330... OK
+  Applying ig_miner_app.0008_auto_20160506_1424... OK
+  Applying ig_miner_app.0009_auto_20160506_2116... OK
+  Applying ig_miner_app.0010_auto_20160507_0832... OK
+  Applying sessions.0001_initial... OK
+```
+
+Admin Account Setup
+-----------
+We're getting so close! Let's create an admin. Run this command in the Terminal and follow the prompts to enter your name, email and password:
+
+` python manage.py createsuperuser `
+
+We need to communicate this addition to Django, so we'l have to do another migration:
+
+` python manage.py makemigrations ig_miner_app `
+
+You may get this message, and it's OK: ` No changes detected in app 'ig_miner_app' `
+
+Next, run the command:
+
+` python manage.py migrate `
+
+Again, you may get a message similar to this: 
+
+``` python
+Operations to perform:
+  Apply all migrations: admin, ig_miner_app, contenttypes, auth, sessions
+Running migrations:
+  No migrations to apply.
+```
 
 Server Setup
 -----------
-Woo hoo! You're now ready to run your server! Make sure you're in the ` instagram_miner/ ` directory, then type the following command in your Terminal and visit ` http://localhost:8000 ` in your web browser:
+Woo hoo! You're now ready to run your server! Using the same Terminal tab from the steps we just completed for the admin, type the following command in your Terminal:
 
 ` (env) $ python manage.py runserver `
 
-You should see the navbar on the home page. There won't be any campaigns listed on the home page, because you haven't created any yet.
+If all went well, you'll receive a success message similar to this:
+
+``` python
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 07, 2016 - 17:10:58
+Django version 1.9.5, using settings 'ig_miner.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+[07/May/2016 17:11:07] "GET / HTTP/1.1" 200 1439
+[07/May/2016 17:11:07] "GET /static/css/ig_miner_app.css HTTP/1.1" 200 682
+```
+
+You can now visit the URL ` http://localhost:8000 ` in your web browser and you should see the navbar on the home page! There won't be any campaigns listed on the home page, because you haven't created any yet.
+
+![Homepage](/Users/Erin/Desktop/instagram_miner.jpg)
 
 
 Basic Usage
