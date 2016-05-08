@@ -1,6 +1,6 @@
 # Instagram Miner
 Instagram Miner allows a user to view & save all posts made with a specific hashtag within a time range.
-![Instagram Miner Campaign Detail](/static/chicago_bandits.png) 
+![Instagram Miner Campaign Detail](/ig_miner_app/static/chicago_bandits.png) 
 
 Table of Contents
 ----------
