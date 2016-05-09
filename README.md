@@ -159,24 +159,6 @@ We're getting so close! Let's create an admin. Run this command in the Terminal 
 
 ` python manage.py createsuperuser `
 
-We need to communicate this addition to Django, so we'll have to do another migration:
-
-` python manage.py makemigrations ig_miner_app `
-
-You may get this message, and it's OK: ` No changes detected in app 'ig_miner_app' `
-
-Next, run the command:
-
-` python manage.py migrate `
-
-Again, you may get a message similar to this: 
-
-``` python
-Operations to perform:
-  Apply all migrations: admin, ig_miner_app, contenttypes, auth, sessions
-Running migrations:
-  No migrations to apply.
-```
 
 Server Setup
 -----------
