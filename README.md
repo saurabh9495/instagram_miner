@@ -30,7 +30,7 @@ Technologies used
 
 Installation
 -----------
-Fork the repo from GitHub and clone it to your machine. If you need help with this part, GitHub has [great documentation](https://help.github.com/articles/fork-a-repo/) -- follow along up to, but not including, Step 3.
+Clone this repo to your machine. If you need help with this part, GitHub has [great documentation](https://help.github.com/articles/fork-a-repo/) -- follow along up to, but not including, Step 3.
 
 We need to create a virtual environment in our copy of the repository, so that the technologies you download to make Instagram Miner work don't interfere with any other technologies you may have installed on your computer. To do this, make sure you're in the ` instagram_miner/ ` directory then type the following in your Terminal:
 
